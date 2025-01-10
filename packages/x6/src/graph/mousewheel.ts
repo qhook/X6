@@ -77,10 +77,12 @@ export class MouseWheel extends Base {
         if (this.currentScale < 0.15) {
           this.cumulatedFactor = (this.currentScale + 0.01) / this.currentScale
         } else {
+          const newLocal = 20
           // Uses to 5% zoom steps for better grid rendering in
           // webkit and to avoid rounding errors for zoom steps
+          // 
           this.cumulatedFactor =
-            Math.round(this.currentScale * factor * 20) / 20 / this.currentScale
+            Math.round(this.currentScale * factor * newLocal) / 20 / this.currentScale
           if (this.cumulatedFactor === 1) {
             this.cumulatedFactor = 1.05
           }
